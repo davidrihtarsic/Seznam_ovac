@@ -18,16 +18,19 @@ USAGE:
   q       - quit
 
   Nekaj načinov uporabe:
-  1. Pritisneš ENTER in pričneš tipkati:
-    npr.: RIH 500 ⏎ 
+  1. Takoj na začetku pritisnemo tipko ENTER
+    in pričneš tipkati:
+    > ⏎ 
+    > RIH 500 <⏎ 
     in dobiš Čoho.
     Nato še enkrat pritisnemo ⏎  in ovca se
-    zabeleži kot Prevzeta.
+    zabeleži kot 'Prevzeta'.
   2. Iskalni niz lahko vnesemo takoj na začetku:
     >RIH⏎ 
     in dobiš vse ovce, ki jih imamo z nekaj statistike:
-    [ 2 👍 + 2 🔍 = 4 🐑]
-  3. Lahko iščemo tudi nize, ki izključujejo nize v podatkih.
+    [ 2 👍 + 7 🔍 = 9 🐑]
+  3. Lahko najdemo tudi vrstice iz tabele,
+    ki izključujejo isani niz.
     Naprimer, da želimo poizkati vse, ki NISO Prevzete:
     > ⏎ 
     > !Prevz < 
