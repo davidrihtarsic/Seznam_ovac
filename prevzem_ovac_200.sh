@@ -2,8 +2,10 @@
 
 help(){
 echo "DECRIPTION:
-  Program je namenjen pregledovanju seznama ovac.
-  Možno je beležiti prevzem ovac in stanje prevzema
+  Program je namenjen pregl-
+  edovanju seznama ovac.
+  Možno je beležiti prevzem
+  ovac in stanje prevzema
   za posameznega lastnika.
 PARAMETERS:
   -h izpiše tole pomoč
@@ -18,23 +20,30 @@ USAGE:
   q       - quit
 
   Nekaj načinov uporabe:
-  1. Takoj na začetku pritisnemo tipko ENTER
+  1. Takoj na začetku priti-
+    snemo tipko ENTER
     in pričneš tipkati:
     > ⏎ 
     > RIH 500 <⏎ 
     in dobiš Čoho.
-    Nato še enkrat pritisnemo ⏎  in ovca se
-    zabeleži kot 'Prevzeta'.
-  2. Iskalni niz lahko vnesemo takoj na začetku:
+    Nato še enkrat pritisnemo ⏎
+    in ovca se zabeleži kot
+    'Prevzeta'.
+  2. Iskalni niz lahko vnesemo
+    takoj na začetku:
     >RIH⏎ 
-    in dobiš vse ovce, ki jih imamo z nekaj statistike:
+    in dobiš vse ovce, ki jih
+    imamo z nekaj statistike:
     [ 2 👍 + 7 🔍 = 9 🐑]
-  3. Lahko najdemo tudi vrstice iz tabele,
-    ki izključujejo isani niz.
-    Naprimer, da želimo poizkati vse, ki NISO Prevzete:
+  3. Lahko najdemo tudi vrstice
+    iz tabele, ki izključujejo
+    isani niz. Naprimer, da
+    želimo poizkati vse, ki
+    NISO Prevzete:
     > ⏎ 
     > !Prevz < 
-    in dobimo vse ovce, ki niso Prevzete.
+    in dobimo vse ovce, ki še
+    niso Prevzete = manjkajo.
   "
 }
 # najprej naj da izbor ovac
@@ -74,7 +83,8 @@ izberi_podatke_iz_baze(){
 obdelava_podatka(){
   echo "--------------------"
   echo "$NAJDEN_VNOS_OVCE"
-  read -e -p "[P]revzem/[e]dit/[n]ew/[d]elete/[c]ancle: " CMD
+  echo "[P]revzem/[e]dit/[n]ew/"
+  read -e -p "[d]elete/[c]ancle: " CMD
   case $CMD in
     p|P|"") prevzem_ovce ;;
     e) uredi_podatek ;;
