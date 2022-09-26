@@ -48,6 +48,8 @@ USAGE:
 }
 # najprej naj da izbor ovac
 # če jih je več naj izpiše poročilo
+#     - to ni najbolje, če jih je več naj ponudi
+#       enako vrsto obdelave, za celoten izbor
 # če je ena naj ponudi možnosti obdelave [Prevzem,Edit,New,Delete]
 
 while getopts "hf:" option; do
@@ -69,12 +71,17 @@ NJEGOVE_DOBLJENE_OVCE=""
 MANJKAJOCE_OVCE=""
 
 izberi_podatke_iz_baze(){
-  if [ -z $ISKANI_NIZ ]
-  then
-    NAJDEN_VNOS_OVCE=$(fzf -m --bind ctrl-a:toggle-all <$INPUT_FILE)
-  else
-    NAJDEN_VNOS_OVCE=$(grep -i -P "$ISKANI_NIZ" $INPUT_FILE)
-  fi
+  NAJDEN_VNOS_OVCE=$(fzf --multi --bind ctrl-a:toggle-all --query=$ISKANI_NIZ < $INPUT_FILE)
+  #spodnjo kodo sem skenslal, ker sedaj lahko vtipkaš iskani niz že prej
+  # in se iskani niz prenese v fzf. Razen, če je iskani niz:
+  #q, h, t.
+  #if [ -z $ISKANI_NIZ ]
+  #then
+  #  NAJDEN_VNOS_OVCE=$(fzf -m --bind ctrl-a:toggle-all <$INPUT_FILE)
+  #else
+  #  NAJDEN_VNOS_OVCE=$(fzf --multi --bind ctrl-a:toggle-all --query=$ISKANI_NIZ < $INPUT_FILE)
+  #  #NAJDEN_VNOS_OVCE=$(grep -i -P "$ISKANI_NIZ" $INPUT_FILE)
+  #fi
   ST_ZADETKOV=$(echo "$NAJDEN_VNOS_OVCE" | sed '/^$/d' | wc -l )
   LASTNIK_OVCE=$(echo "$NAJDEN_VNOS_OVCE" | head -1 | awk -F, '{print $2}')
   STEVILKA_OVCE=$(echo "$NAJDEN_VNOS_OVCE" | head -1 | awk -F, '{print $1}')
