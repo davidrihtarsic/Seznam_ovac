@@ -70,6 +70,12 @@ VSEH_NJEGOVIH_OVAC=""
 NJEGOVE_DOBLJENE_OVCE=""
 MANJKAJOCE_OVCE=""
 
+# barve
+yellow="\e[1;33m"
+green="\e[1;32m"
+red="\e[1;31m"
+dClr="\e[0m"
+
 izberi_podatke_iz_baze(){
   NAJDEN_VNOS_OVCE=$(fzf --multi --bind ctrl-a:toggle-all --query=$ISKANI_NIZ < $INPUT_FILE)
   #spodnjo kodo sem skenslal, ker sedaj lahko vtipkaš iskani niz že prej
@@ -105,17 +111,17 @@ prevzem_ovce(){
   OVCA_ZE_VZETA=$(grep -P "$STEVILKA_OVCE" ./$INPUT_FILE |grep "Prevzeta" | wc -l)
   if [ $OVCA_ZE_VZETA -gt 0 ]
   then
-    echo "ŽE VZETA"
+    echo -e "${red}ŽE VZETA${dClr}"
   else
     sed -i "/$STEVILKA_OVCE/ s/.*$/&,Prevzeta/" ./$INPUT_FILE
-    echo "OK .. VOZI"
+    echo -e "${green}OK .. VOZI${dClr}"
   fi
   quick_info
 }
 
 izbrisi_oznacbo(){
   sed -i "/$STEVILKA_OVCE/ s/,Prevzeta//" ./$INPUT_FILE
-  echo "Izbris prevzema"
+  echo -e "${yellow}Izbris prevzema${dClr}"
   quick_info
 }
 
