@@ -95,7 +95,7 @@ izberi_podatke_iz_baze(){
 
 obdelava_podatka(){
   echo "--------------------"
-  echo "$NAJDEN_VNOS_OVCE"
+  echo -e "${yellow}$NAJDEN_VNOS_OVCE${dClr}"
   echo "[P]revzem/[e]dit/[n]ew/"
   read -e -p "[d]elete/[c]ancle: " CMD
   case $CMD in
